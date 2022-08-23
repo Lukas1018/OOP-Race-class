@@ -56,6 +56,11 @@ const drawCars = (amount) => {
   for (let i = 0; i < amount; i++) {
     cars.push(new Car(i));
   }
+
+  //3.2 sukt loopa per visus car array objektus ir kiekvienam is ju:
+  // sukurti nauja HTML elementa div, prideti klase 'car', nurodyti pozicija per .style.top = 60 * car.id + 'px'
+  // ir appendinti i dokumenta.
+
   cars.forEach((car) => {
     const newCar = document.createElement("div");
     newCar.classList.add("car");
@@ -64,9 +69,14 @@ const drawCars = (amount) => {
   });
 };
 
-//3.2 sukt loopa per visus car array objektus ir kiekvienam is ju:
-// sukurti nauja HTML elementa div, prideti klase 'car', nurodyti pozicija per .style.top = 60 * car.id + 'px'
-// ir appendinti i dokumenta.
+function drawFinishLine(amountOfCars, linelength) {
+  const line = document.createElement("div");
+  line.classList.add("finishLine");
+  line.style.left = distance + 100 + "px";
+  line.style.height = cars.length * 60 + "px";
+  document.body.append(line);
+}
 
 getUserInput();
 drawCars(numberOfCars);
+drawFinishLine(numberOfCars, distance);
